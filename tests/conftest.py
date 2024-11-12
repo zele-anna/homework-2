@@ -16,17 +16,13 @@ def second_product():
 
 @pytest.fixture
 def first_category(first_product, second_product):
-    return Category("Смартфоны",
-                    "Смартфоны, как средство не только коммуникации.",
-                    [first_product, second_product])
+    return Category("Смартфоны", "Смартфоны, как средство не только коммуникации.", [first_product, second_product])
 
 
 @pytest.fixture
 def second_category(first_product, second_product):
-    return Category("Телевизоры",
-                    "Комфорт и эстетика.",
-                    [
-                        first_product,
-                        second_product,
-                        Product("Пылесос Xiaomi", "Dreame v12", "20999.99", 2)
-                    ])
+    return Category(
+        "Телевизоры",
+        "Комфорт и эстетика.",
+        [first_product, second_product, Product("Пылесос Xiaomi", "Dreame v12", "20999.99", 2)],
+    )
