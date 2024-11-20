@@ -4,6 +4,7 @@ import pytest
 
 from src.category import Category
 from src.product import Product
+from src.product_iterator import ProductIterator
 
 
 @pytest.fixture
@@ -28,3 +29,8 @@ def second_category(first_product: Any, second_product: Any) -> Any:
         "Комфорт и эстетика.",
         [first_product, second_product, Product("Пылесос Xiaomi", "Dreame v12", 20999.99, 2)],
     )
+
+
+@pytest.fixture
+def product_iterator(first_category: Any) -> Any:
+    return ProductIterator(first_category)
