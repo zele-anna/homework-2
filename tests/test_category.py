@@ -1,5 +1,7 @@
 from typing import Any
 
+import pytest
+
 
 def test_category(first_category: Any, second_category: Any) -> None:
     assert first_category.name == "Смартфоны"
@@ -26,6 +28,11 @@ def test_category_add_product(second_category: Any, first_product: Any) -> None:
     assert len(second_category.products_in_list) == 3
     second_category.add_product(first_product)
     assert len(second_category.products_in_list) == 4
+
+
+def test_category_add_product_error(second_category: Any) -> None:
+    with pytest.raises(TypeError):
+        second_category.add_product("Not a product")
 
 
 def test_category_str(second_category: Any) -> None:
