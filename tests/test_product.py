@@ -1,5 +1,7 @@
 from typing import Any
 
+import pytest
+
 from src.product import Product
 
 
@@ -49,3 +51,17 @@ def test_product_str(first_product: Any) -> None:
 
 def test_product_add(first_product: Any, second_product: Any) -> None:
     assert first_product + second_product == 2114000.00
+
+
+def test_new_product_error(capsys: Any) -> None:
+    with pytest.raises(ValueError):
+        Product.new_product(
+            {
+                "name": "Samsung Galaxy S23 Ultra",
+                "description": "256GB, Серый цвет, 200MP камера",
+                "price": 180000.0,
+                "quantity": 0,
+            }
+        )
+        message = capsys.readouterr()
+        assert message.out.strip().split("\n") == "Товар с нулевым количеством не может быть добавлен"
