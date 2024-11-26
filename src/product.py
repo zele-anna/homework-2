@@ -1,7 +1,10 @@
 from typing import Any
 
+from src.base_product import BaseProduct
+from src.repr_mixin import ReprMixin
 
-class Product:
+
+class Product(BaseProduct, ReprMixin):
     name: str
     description: str
     quantity: int
@@ -11,6 +14,7 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__()
 
     def __str__(self) -> str:
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
