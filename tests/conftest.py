@@ -34,6 +34,11 @@ def second_category(first_product: Any, second_product: Any) -> Any:
 
 
 @pytest.fixture
+def category_with_no_prods(first_product: Any, second_product: Any) -> Any:
+    return Category("Смартфоны", "Смартфоны, как средство не только коммуникации.", [])
+
+
+@pytest.fixture
 def product_iterator(first_category: Any) -> Any:
     return ProductIterator(first_category)
 

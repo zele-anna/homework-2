@@ -37,3 +37,8 @@ def test_category_add_product_error(second_category: Any) -> None:
 
 def test_category_str(second_category: Any) -> None:
     assert str(second_category) == "Телевизоры, количество продуктов: 24 шт."
+
+
+def test_middle_price(first_category: Any, category_with_no_prods: Any) -> None:
+    assert first_category.middle_price() == 120500.00
+    assert category_with_no_prods.middle_price() == 0
