@@ -1,3 +1,5 @@
+from typing import Any
+
 from src.base_order import BaseOrder
 from src.product import Product
 
@@ -38,3 +40,9 @@ class Category(BaseOrder):
     @property
     def products_in_list(self) -> list:
         return self.__products
+
+    def middle_price(self) -> float | Any:
+        try:
+            return sum([product.price for product in self.__products]) / len(self.__products)
+        except ZeroDivisionError:
+            return 0
